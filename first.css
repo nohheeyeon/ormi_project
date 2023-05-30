@@ -1,0 +1,102 @@
+*{
+    font-family: 'Caveat', cursive;
+    font-family: 'EB Garamond', serif;
+    font-family: 'Pangolin', cursive;
+}
+
+body{
+    background-color: azure;
+}
+
+header{
+    padding: 10px;
+    margin: 10px;
+}
+
+.top-img{
+    height: 200px;
+    width: 100%;
+}
+
+.main-string{
+    box-sizing: border-box;
+    background-color: rgb(19, 181, 127);
+    height: 30px;
+    width: 100%;
+}
+
+#Logo-img{
+    height: 50px;
+    width: 50px;
+}
+
+.main{
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: -50px;
+}
+
+.main img{
+    height: 30px;
+    width: 30px;
+}
+
+body {
+    padding: 30px;
+    margin: 30px;
+    background-color: azure;
+}
+
+.main-string {
+    box-sizing: border-box;
+    background-color: #519d9e;
+    height: 50px;
+    width: 100%;
+}
+
+#Logo-img {
+    height: 50px;
+    width: 50px;
+}
+
+.main {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: -50px;
+}
+
+.main img {
+    height: 30px;
+    width: 30px;
+}
+
+.main-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.introduce{
+    font-size: 25px;
+    margin-top: 200px;
+    text-align: center;
+    margin: 100px;
+}
+
+input[type="button"] {
+    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+    margin-top: 50px;
+    width: 300px;
+    height: 100px;
+    font-size: 50px;
+    border: none;
+    border-radius: 15px;
+}
+
+input[type="button"]:hover{
+    box-shadow: 8px 8px #99bdff;
+    transition: .3s;
+    cursor: pointer;
+}
