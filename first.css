@@ -8,13 +8,27 @@ body{
     background-color: azure;
 }
 
-header{
+header {
     padding: 10px;
     margin: 10px;
+    position: relative; /* 부모 요소를 relative로 설정하여 가상 요소의 위치 기준을 설정 */
 }
 
+header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(background_mountain.png);
+    opacity: 0.3; /* 투명도를 조절할 값을 입력 (0.0 ~ 1.0 사이) */
+    z-index: -1; /* 가상 요소를 배경 이미지의 뒤에 위치시킴 */
+}
+
+
 .top-img{
-    height: 200px;
+    height: 100px;
     width: 100%;
 }
 
@@ -22,7 +36,7 @@ header{
     box-sizing: border-box;
     background-color: rgb(19, 181, 127);
     height: 30px;
-    width: 100%;
+    width: 100vh;
 }
 
 #Logo-img{
@@ -39,6 +53,7 @@ header{
 .main img{
     height: 30px;
     width: 30px;
+    margin: 3px;
 }
 
 body {
