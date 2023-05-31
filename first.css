@@ -1,7 +1,5 @@
 *{
-    font-family: 'Caveat', cursive;
-    font-family: 'EB Garamond', serif;
-    font-family: 'Pangolin', cursive;
+    font-family: 'Nanum Brush Script', cursive;
 }
 
 body{
@@ -94,7 +92,7 @@ body {
     margin: auto;
 }
 .introduce{
-    font-size: 25px;
+    font-size: 35px;
     margin-top: 200px;
     text-align: center;
     margin: 100px;
