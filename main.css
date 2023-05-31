@@ -1,5 +1,59 @@
 *{
-    font-family: 'Caveat', cursive;
-    font-family: 'EB Garamond', serif;
-    font-family: 'Pangolin', cursive;
+    font-family: 'Dancing Script', cursive;
 }
+
+body {
+    background-color: azure;
+    margin: 40px;
+    padding: 40px;
+  }
+  
+  #logo-img {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 50px;
+  }
+  
+  .box {
+    background-color: #519d9e;
+    width: auto;
+    height: auto;
+    font-size: 30px;
+    border-radius: 10px;
+    border: none;
+  }
+  
+  input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+    margin: 30px;
+  }
+  
+  textarea {
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: none;
+  }
+  
+  input[type="submit"] {
+    display: block;
+    margin: 0 auto;
+    margin-top: 40px;
+    width: 200px;
+    height: 100px;
+    background-color: #519d9e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #327e80;
+  }
+  

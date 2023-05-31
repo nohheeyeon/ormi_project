@@ -27,17 +27,18 @@ header::before {
 }
 
 
-.top-img{
-    height: 100px;
-    width: 100%;
+.top-img::before {
+    content: "";
+    opacity: 0.1;
 }
 
-.main-string{
+
+/* .main-string{
     box-sizing: border-box;
     background-color: rgb(19, 181, 127);
     height: 30px;
     width: 100vh;
-}
+} */
 
 #Logo-img{
     height: 50px;

@@ -6,44 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat&family=EB+Garamond:ital,wght@0,700;1,400&family=Pangolin&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="main.css">
-    <title>main-page</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <div class="nav-bar">
-    <img id="logo-img" src="Logo.png" alt="로고">
-    </div>
-    <form action="submit">
-        <div class="필수정보">
-            <div class="box1">box1</div>
-        <div class="gender">
-        <input type="checkbox">여자
-        <input type="checkbox">남자
-    </div>
-    <div class="age">
-        <div class="box2">box2</div>
-        <input type="checkbox">10대 이하
-        <input type="checkbox">20대 
-        <input type="checkbox">30대 
-        <input type="checkbox">40대
-        <input type="checkbox">50대
-        <input type="checkbox">60대
-        <input type="checkbox">70대 이상
-    </div>
-    <div class="place">
-        <div class="box3">box3</div>
-        <input type="checkbox"> 실내
-        <input type="checkbox"> 실외
-    </div>
-    </div>
-    <div class="plus-question">
-        <div class="box4">box4</div>
-        <textarea name="data" id="data" cols="30" rows="10" placeholder="입력해주세요"></textarea>
-    </form>
-    </div>
+        <img id="logo-img" src="Logo.png" alt="로고">
+        <form id="chat-form">
+            <div class="필수정보">
+                <div class="box box0">성별</div>
+            </div>
+            <div class="gender">
+                <label for="여자"><input type="checkbox" id="여자">여자</label>
+                <label for="남자"><input type="checkbox" id="남자">남자</label>
+            </div>
+            <div class="age">
+                <div class="box box2">나이</div>
+                <label for="10대 이하"><input type="checkbox" id="10대 이하">10대 이하</label>
+                <label for="20대"><input type="checkbox" id="20대">20대</label>
+                <label for="30대"><input type="checkbox" id="30대">30대</label>
+                <label for="40대"><input type="checkbox" id="40대">40대</label>
+                <label for="50대"><input type="checkbox" id="50대">50대</label>
+                <label for="60대"><input type="checkbox" id="60대">60대</label>
+                <label for="70대 이상"><input type="checkbox" id="70대 이상">70대 이상</label>
+            </div>
+            <div class="place">
+                <div class="box box3">장소</div>
+                <label for="실내"><input type="checkbox" id="실내">실내</label>
+                <label for="실외"><input type="checkbox" id="실외">실외</label>
+            </div>
+            <div class="plus-question">
+                <div class="box box4">추가</div>
+                <textarea name="data" id="data" cols="30" rows="10" placeholder="Lorem"></textarea>
+            </div>
 
-    <input type="submit" value="제출">
-    
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <div id="chat-container">
+        <ul id="chat-list"></ul>
+    </div>
+    <script src="submit.js"></script>
 </body>
 </html>
