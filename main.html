@@ -5,9 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Nanum+Brush+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.css">
+    <style>
+        * {
+            font-family: 'Dancing Script', 'Nanum Brush Script', cursive;
+        }
+    </style>
 </head>
 <body>
     <div class="nav-bar">
@@ -36,7 +41,7 @@
                 <label for="실외"><input type="checkbox" id="실외">실외</label>
             </div>
             <div class="plus-question">
-                <div class="box box4">추가</div>
+                <div class="box box4">추가 정보</div>
                 <textarea name="data" id="data" cols="30" rows="10" placeholder="Lorem"></textarea>
             </div>
 
@@ -47,5 +52,6 @@
         <ul id="chat-list"></ul>
     </div>
     <script src="submit.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
