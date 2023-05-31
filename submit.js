@@ -60,19 +60,6 @@ const printAnswer = (answer) => {
   $chatList.appendChild(li);
 };
 
-// textarea에 체크박스 요소들을 스트링 형태로 추가하는 함수
-const appendCheckboxesToString = () => {
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-  let str = "";
-
-  checkboxes.forEach((checkbox) => {
-    str += checkbox.value + "\n";
-  });
-
-  const textarea = document.querySelector("#data");
-  textarea.value += str;
-};
-
 // api 요청보내는 함수
 const apiPost = async () => {
   const result = await fetch(url, {
@@ -92,12 +79,38 @@ const apiPost = async () => {
     });
 };
 
+// 스크롤 내려가는 기능 추가
+window.addEventListener("DOMContentLoaded", function () {
+  const boxes = document.querySelectorAll(".box");
+
+  function handleScroll() {
+    const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+
+    for (let i = 0; i < boxes.length; i++) {
+      const box = boxes[i];
+      const nextBox = boxes[i + 1];
+
+      const boxTop = box.offsetTop;
+      const nextBoxTop = nextBox ? nextBox.offsetTop : Number.POSITIVE_INFINITY;
+
+      if (currentScrollPos >= boxTop && currentScrollPos < nextBoxTop) {
+        box.style.position = "fixed";
+        box.style.top = "50px"; // 헤더의 높이에 맞게 이 값을 조정해주세요
+      } else {
+        box.style.position = "relative";
+        box.style.top = "auto";
+      }
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll);
+});
+
 // submit
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
   $input.value = null;
   sendQuestion(question);
-  appendCheckboxesToString(); // 체크박스 요소들을 스트링 형태로 textarea에 추가
   apiPost();
   printQuestion();
 });
