@@ -8,11 +8,19 @@ let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
 // 사용자의 질문
 let question;
 
+// 사용자의 추가 정보
+let user_content = '';
+
+// 사용자의 선택 정보
+let gender = '';
+let age = '';
+let place = '';
+
 // 질문과 답변 저장
 let data = [
   {
     role: "system",
-    content: "assistant는 운동을 추천해준는 친절한 답변가이다.",
+    content: "assistant는 운동을 추천해주는 친절한 답변가이다.",
   },
 ];
 
@@ -22,6 +30,24 @@ let questionData = [];
 // input에 입력된 질문 받아오는 함수
 $input.addEventListener("input", (e) => {
   question = e.target.value;
+  user_content = question; // 사용자가 입력한 내용을 user_content 변수에 할당
+});
+
+// 체크박스 변경 시 선택 정보 업데이트
+document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+  checkbox.addEventListener("change", (e) => {
+    const target = e.target;
+    const id = target.id;
+    const checked = target.checked;
+
+    if (id === '여자' || id === '남자') {
+      gender = checked ? id : '';
+    } else if (id.includes('대')) {
+      age = checked ? id : '';
+    } else if (id === '실내' || id === '실외') {
+      place = checked ? id : '';
+    }
+  });
 });
 
 // 사용자의 질문을 객체를 만들어서 push
@@ -62,16 +88,26 @@ const printAnswer = (answer) => {
 
 // api 요청보내는 함수
 const apiPost = async () => {
+  const content = `나는 ${age} ${gender}이야. ${place}에서 운동을 하고 싶고, ${user_content}`;
+
+  const dataToSend = data.map((item) => ({
+    role: item.role,
+    content: item.role === "user" ? content : item.content,
+  }));
+
+  console.log("전송할 데이터:", dataToSend); // 데이터 전송 전에 데이터 확인
+
   const result = await fetch(url, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(dataToSend),
     redirect: "follow",
   })
     .then((res) => res.json())
     .then((res) => {
+      console.log("응답 받은 데이터:", res); // 응답 받은 후에 데이터 확인
       printAnswer(res.choices[0].message);
     })
     .catch((err) => {
@@ -79,44 +115,34 @@ const apiPost = async () => {
     });
 };
 
-// 스크롤 내려가는 기능 추가 (부드럽게 스크롤)
+// 스크롤 내려가는 기능 추가
 window.addEventListener("DOMContentLoaded", function () {
   const boxes = document.querySelectorAll(".box");
-  let isScrolling = false;
 
   function handleScroll() {
-    if (!isScrolling) {
-      window.requestAnimationFrame(function () {
-        const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
 
-        for (let i = 0; i < boxes.length; i++) {
-          const box = boxes[i];
-          const nextBox = boxes[i + 1];
+    for (let i = 0; i < boxes.length; i++) {
+      const box = boxes[i];
+      const nextBox = boxes[i + 1];
 
-          const boxTop = box.offsetTop;
-          const nextBoxTop = nextBox ? nextBox.offsetTop : Number.POSITIVE_INFINITY;
+      const boxTop = box.offsetTop;
+      const nextBoxTop = nextBox ? nextBox.offsetTop : Number.POSITIVE_INFINITY;
 
-          if (currentScrollPos >= boxTop && currentScrollPos < nextBoxTop) {
-            box.style.position = "fixed";
-            box.style.top = "50px"; // 헤더의 높이에 맞게 이 값을 조정해주세요
-            box.style.width = "85%"; // 가로 길이 유지
-          } else {
-            box.style.position = "relative";
-            box.style.top = "auto";
-            box.style.width = "auto";
-          }
-        }
-
-        isScrolling = false;
-      });
+      if (currentScrollPos >= boxTop && currentScrollPos < nextBoxTop) {
+        box.style.position = "fixed";
+        box.style.top = "50px"; // 헤더의 높이에 맞게 이 값을 조정해주세요
+        box.style.width = "85%"; // 가로 길이 유지
+      } else {
+        box.style.position = "relative";
+        box.style.top = "auto";
+        box.style.width = "auto";
+      }
     }
-
-    isScrolling = true;
   }
 
   window.addEventListener("scroll", handleScroll);
 });
-
 
 
 // submit
