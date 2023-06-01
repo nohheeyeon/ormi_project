@@ -12,7 +12,7 @@ let question;
 let data = [
   {
     role: "system",
-    content: "assistant는 친절한 답변가이다.",
+    content: "assistant는 운동을 추천해준는 친절한 답변가이다.",
   },
 ];
 
