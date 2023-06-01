@@ -20,16 +20,11 @@ header::before {
     right: 0;
     bottom: 0;
     background-image: url(background_mountain.png);
+    height: 100%;
+    width: 100%;
     opacity: 0.3; /* 투명도를 조절할 값을 입력 (0.0 ~ 1.0 사이) */
     z-index: -1; /* 가상 요소를 배경 이미지의 뒤에 위치시킴 */
 }
-
-
-.top-img::before {
-    content: "";
-    opacity: 0.1;
-}
-
 
 /* .main-string{
     box-sizing: border-box;
@@ -53,6 +48,8 @@ header::before {
     height: 30px;
     width: 30px;
     margin: 3px;
+    position: relative;
+    right: 15px;
 }
 
 body {
@@ -66,6 +63,8 @@ body {
     background-color: #519d9e;
     height: 50px;
     width: 100%;
+    border-radius: 15px;
+    border: none;
 }
 
 #Logo-img {
@@ -77,11 +76,6 @@ body {
     display: flex;
     flex-direction: row-reverse;
     margin-top: -50px;
-}
-
-.main img {
-    height: 30px;
-    width: 30px;
 }
 
 .main-page{
@@ -96,22 +90,33 @@ body {
     margin-top: 200px;
     text-align: center;
     margin: 100px;
-    width: 1000px;
+    width: 800px;
+}
+
+.introduce span{
+    font-family: 'Gamja Flower', cursive;
+    font-size: 50px;
 }
 
 input[type="button"] {
     background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
     box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
-    margin-top: 50px;
+    margin-top: 10px;
     width: 200px;
     height: 100px;
     font-size: 50px;
     border: none;
     border-radius: 15px;
+    position: relative;
+    margin-bottom: 100px;
+    transition: box-shadow 0.3s; /* box-shadow 속성에 transition 추가 */
 }
 
 input[type="button"]:hover{
     box-shadow: 8px 8px #99bdff;
-    transition: .3s;
     cursor: pointer;
+}
+
+input[type="button"]:not(:hover) {
+    transition: box-shadow 0.3s; /* hover 상태가 아닐 때도 transition 추가 */
 }
