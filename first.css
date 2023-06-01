@@ -1,15 +1,15 @@
-*{
+* {
     font-family: 'Nanum Brush Script', cursive;
 }
 
-body{
+body {
     background-color: azure;
 }
 
 header {
-    padding: 10px;
-    margin: 10px;
-    position: relative; /* 부모 요소를 relative로 설정하여 가상 요소의 위치 기준을 설정 */
+    padding: 1%;
+    margin: 1%;
+    position: relative;
 }
 
 header::before {
@@ -20,31 +20,23 @@ header::before {
     right: 0;
     bottom: 0;
     background-image: url(background_mountain.png);
-    height: 100%;
-    width: 100%;
-    opacity: 0.3; /* 투명도를 조절할 값을 입력 (0.0 ~ 1.0 사이) */
-    z-index: -1; /* 가상 요소를 배경 이미지의 뒤에 위치시킴 */
+    background-size: cover;
+    opacity: 0.3;
+    z-index: -1;
 }
 
-/* .main-string{
-    box-sizing: border-box;
-    background-color: rgb(19, 181, 127);
-    height: 30px;
-    width: 100vh;
-} */
-
-#Logo-img{
+#Logo-img {
     height: 50px;
     width: 50px;
 }
 
-.main{
+.main {
     display: flex;
     flex-direction: row-reverse;
     margin-top: -50px;
 }
 
-.main img{
+.main img {
     height: 30px;
     width: 30px;
     margin: 3px;
@@ -67,25 +59,21 @@ body {
     border: none;
 }
 
-#Logo-img {
-    height: 50px;
-    width: 50px;
-}
-
 .main {
     display: flex;
     flex-direction: row-reverse;
     margin-top: -50px;
 }
 
-.main-page{
+.main-page {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: auto;
 }
-.introduce{
+
+.introduce {
     font-size: 35px;
     margin-top: 200px;
     text-align: center;
@@ -93,7 +81,7 @@ body {
     width: 800px;
 }
 
-.introduce span{
+.introduce span {
     font-family: 'Gamja Flower', cursive;
     font-size: 50px;
 }
@@ -109,14 +97,14 @@ input[type="button"] {
     border-radius: 15px;
     position: relative;
     margin-bottom: 100px;
-    transition: box-shadow 0.3s; /* box-shadow 속성에 transition 추가 */
+    transition: box-shadow 0.3s;
 }
 
-input[type="button"]:hover{
+input[type="button"]:hover {
     box-shadow: 8px 8px #99bdff;
     cursor: pointer;
 }
 
 input[type="button"]:not(:hover) {
-    transition: box-shadow 0.3s; /* hover 상태가 아닐 때도 transition 추가 */
+    transition: box-shadow 0.3s;
 }
