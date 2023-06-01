@@ -79,32 +79,45 @@ const apiPost = async () => {
     });
 };
 
-// 스크롤 내려가는 기능 추가
+// 스크롤 내려가는 기능 추가 (부드럽게 스크롤)
 window.addEventListener("DOMContentLoaded", function () {
   const boxes = document.querySelectorAll(".box");
+  let isScrolling = false;
 
   function handleScroll() {
-    const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
+    if (!isScrolling) {
+      window.requestAnimationFrame(function () {
+        const currentScrollPos = window.pageYOffset || document.documentElement.scrollTop;
 
-    for (let i = 0; i < boxes.length; i++) {
-      const box = boxes[i];
-      const nextBox = boxes[i + 1];
+        for (let i = 0; i < boxes.length; i++) {
+          const box = boxes[i];
+          const nextBox = boxes[i + 1];
 
-      const boxTop = box.offsetTop;
-      const nextBoxTop = nextBox ? nextBox.offsetTop : Number.POSITIVE_INFINITY;
+          const boxTop = box.offsetTop;
+          const nextBoxTop = nextBox ? nextBox.offsetTop : Number.POSITIVE_INFINITY;
 
-      if (currentScrollPos >= boxTop && currentScrollPos < nextBoxTop) {
-        box.style.position = "fixed";
-        box.style.top = "50px"; // 헤더의 높이에 맞게 이 값을 조정해주세요
-      } else {
-        box.style.position = "relative";
-        box.style.top = "auto";
-      }
+          if (currentScrollPos >= boxTop && currentScrollPos < nextBoxTop) {
+            box.style.position = "fixed";
+            box.style.top = "50px"; // 헤더의 높이에 맞게 이 값을 조정해주세요
+            box.style.width = "85%"; // 가로 길이 유지
+          } else {
+            box.style.position = "relative";
+            box.style.top = "auto";
+            box.style.width = "auto";
+          }
+        }
+
+        isScrolling = false;
+      });
     }
+
+    isScrolling = true;
   }
 
   window.addEventListener("scroll", handleScroll);
 });
+
+
 
 // submit
 $form.addEventListener("submit", (e) => {
