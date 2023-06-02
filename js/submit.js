@@ -86,7 +86,7 @@ const printAnswer = (answer) => {
   $chatList.appendChild(li);
 };
 
-// api 요청보내는 함수
+// API 요청 보내는 함수
 const apiPost = async () => {
   const content = `나는 ${age} ${gender}이야. ${place}에서 운동을 하고 싶고, ${user_content}`;
 
@@ -97,29 +97,33 @@ const apiPost = async () => {
 
   console.log("전송할 데이터:", dataToSend); // 데이터 전송 전에 데이터 확인
 
-  const result = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(dataToSend),
-    redirect: "follow",
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      console.log("응답 받은 데이터:", res); // 응답 받은 후에 데이터 확인
-      printAnswer(res.choices[0].message);
-    })
-    .catch((err) => {
-      console.log(err);
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dataToSend),
+      redirect: "follow",
     });
+
+    if (!response.ok) {
+      throw new Error("에러가 발생하였습니다.");
+    }
+
+    const result = await response.json();
+    console.log("응답 받은 데이터:", result); // 응답 받은 후에 데이터 확인
+    printAnswer(result.choices[0].message);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-// submit
-$form.addEventListener("submit", (e) => {
+// Submit 이벤트 핸들러
+$form.addEventListener("submit", async (e) => {
   e.preventDefault();
   $input.value = null;
   sendQuestion(question);
-  apiPost();
-  printQuestion();
+  await printQuestion();
+  await apiPost();
 });
