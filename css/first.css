@@ -21,7 +21,7 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(asset/background_mountain.png);
+    background-image: url(../asset/background_mountain.png);
     background-size: cover;
     opacity: 0.3;
     z-index: -1;

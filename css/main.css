@@ -4,7 +4,7 @@
 }
 
 body {
-  background-image: url(asset/change.jpg);
+  background-image: url(../asset/change.jpg);
   background-color: rgba(240, 248, 255, 0.1);
   background-repeat: no-repeat;
   background-size: cover;
