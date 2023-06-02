@@ -4,6 +4,8 @@
 
 body {
     background-color: azure;
+    padding: 30px;
+    margin: 30px;
 }
 
 header {
@@ -25,29 +27,30 @@ header::before {
     z-index: -1;
 }
 
-#Logo-img {
-    height: 50px;
-    width: 50px;
-}
-
 .main {
     display: flex;
-    flex-direction: row-reverse;
-    margin-top: -50px;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.main img#Logo-img {
+    margin-right: auto;
+    margin-left: 25px;
+}
+
+.main img:not(#Logo-img) {
+    margin-left: auto;
+    margin-right: 5px;
+}
+
+
 
 .main img {
     height: 30px;
     width: 30px;
-    margin: 3px;
+    margin: 7px;
     position: relative;
     right: 15px;
-}
-
-body {
-    padding: 30px;
-    margin: 30px;
-    background-color: azure;
 }
 
 .main-string {
@@ -57,12 +60,6 @@ body {
     width: 100%;
     border-radius: 15px;
     border: none;
-}
-
-.main {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-top: -50px;
 }
 
 .main-page {
@@ -107,4 +104,42 @@ input[type="button"]:hover {
 
 input[type="button"]:not(:hover) {
     transition: box-shadow 0.3s;
+}
+
+/* 미디어 쿼리 */
+
+@media (max-width: 768px) {
+    .introduce {
+        font-size: 25px;
+        width: 100%;
+    }
+
+    .introduce span {
+        font-size: 40px;
+    }
+
+    input[type="button"] {
+        width: 150px;
+        height: 80px;
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+}
+
+@media (max-width: 480px) {
+    .introduce {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .introduce span {
+        font-size: 35px;
+    }
+
+    input[type="button"] {
+        width: 120px;
+        height: 60px;
+        font-size: 25px;
+        margin-bottom: 30px;
+    }
 }
