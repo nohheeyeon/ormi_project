@@ -1,9 +1,20 @@
 const $form = document.querySelector("#chat-form");
 const $input = document.querySelector("#data");
 const $chatList = document.querySelector("#chat-list");
+const loadingScreen = document.querySelector('#loading-screen');
 
 // openAI API
 let url = `https://estsoft-openai-api.jejucodingcamp.workers.dev/`;
+
+function showLoading() {
+  loadingScreen.style.display = 'flex';
+}
+
+function hideLoading() {
+  loadingScreen.style.display = 'none';
+}
+
+hideLoading(); // 로딩 화면 숨기기
 
 // 사용자의 질문
 let question;
@@ -98,6 +109,8 @@ const apiPost = async () => {
   console.log("전송할 데이터:", dataToSend); // 데이터 전송 전에 데이터 확인
 
   try {
+    showLoading(); // 로딩 화면 보이기
+
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -114,8 +127,11 @@ const apiPost = async () => {
     const result = await response.json();
     console.log("응답 받은 데이터:", result); // 응답 받은 후에 데이터 확인
     printAnswer(result.choices[0].message);
+
+    hideLoading(); // 로딩 화면 숨기기
   } catch (error) {
     console.log(error);
+    hideLoading(); // 로딩 화면 숨기기
   }
 };
 
