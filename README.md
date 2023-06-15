@@ -1,1 +1,5 @@
-HTML, CSS, JavaScript Project
+오르미에서 진행 중인 API 활용 HTML, CSS, JavaScript 프로젝트입니다
+
+제공된 서버 API를 이용하여 간단한 챗봇을 구현했습니다
+
+운동을 추천해주는스서비스
